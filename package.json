@@ -1,0 +1,25 @@
+{
+  "name": "just-another-math-library",
+  "version": "1.0.0",
+  "description": "A library with some miscellaneous math things.",
+  "main": "src/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anselb/just-another-math-library.git"
+  },
+  "author": "Ansel <iamansel@gmail.com> (https://github.com/anselb)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anselb/just-another-math-library/issues"
+  },
+  "homepage": "https://github.com/anselb/just-another-math-library#readme"
+}
