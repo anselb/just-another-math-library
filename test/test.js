@@ -25,3 +25,17 @@ it('expects Currency to add integers', () => {
 
   expect(c.add(toAdd).value).toBe(19);
 });
+
+it('expects Currency to subtract integers', () => {
+  const n = 15;
+  const c = new Currency(n);
+  let toSubtract = 3.56;
+
+  expect(() => {
+    c.add(toSubtract);
+  }).toThrow(TypeError(`Expected integer representing pennies, received ${toSubtract}`));
+
+  toSubtract = 4
+
+  expect(c.subtract(toSubtract).value).toBe(11);
+});
