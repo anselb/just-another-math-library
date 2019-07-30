@@ -21,7 +21,7 @@ it('expects Currency to add integers', () => {
     c.add(toAdd);
   }).toThrow(TypeError(`Expected integer representing pennies, received ${toAdd}`));
 
-  toAdd = 4
+  toAdd = 4;
 
   expect(c.add(toAdd).value).toBe(19);
 });
@@ -35,7 +35,7 @@ it('expects Currency to subtract integers', () => {
     c.add(toSubtract);
   }).toThrow(TypeError(`Expected integer representing pennies, received ${toSubtract}`));
 
-  toSubtract = 4
+  toSubtract = 4;
 
   expect(c.subtract(toSubtract).value).toBe(11);
 });
@@ -49,7 +49,7 @@ it('expects Currency to multiply integers', () => {
     c.add(toMultiply);
   }).toThrow(TypeError(`Expected integer representing pennies, received ${toMultiply}`));
 
-  toMultiply = 4
+  toMultiply = 4;
 
   expect(c.multiply(toMultiply).value).toBe(60);
 });
