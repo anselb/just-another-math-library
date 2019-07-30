@@ -39,3 +39,17 @@ it('expects Currency to subtract integers', () => {
 
   expect(c.subtract(toSubtract).value).toBe(11);
 });
+
+it('expects Currency to multiply integers', () => {
+  const n = 15;
+  const c = new Currency(n);
+  let toMultiply = 3.56;
+
+  expect(() => {
+    c.add(toMultiply);
+  }).toThrow(TypeError(`Expected integer representing pennies, received ${toMultiply}`));
+
+  toMultiply = 4
+
+  expect(c.multiply(toMultiply).value).toBe(60);
+});
