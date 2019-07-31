@@ -5,6 +5,7 @@ export default class Currency {
     this.value = value;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   checkInt(n) {
     if (n % 1 !== 0) {
       throw TypeError(`Expected integer representing pennies, received ${n}`);

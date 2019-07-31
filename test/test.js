@@ -81,7 +81,7 @@ it('expects Currency to split all pennies without leftover change', () => {
 
   expect(c.split(toSplit)).toEqual([0.04, 0.04, 0.04, 0.03]);
 
-  c.add(402)
+  c.add(402);
 
   expect(c.split(toSplit)).toEqual([1.05, 1.04, 1.04, 1.04]);
 });
