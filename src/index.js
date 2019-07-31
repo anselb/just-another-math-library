@@ -1,4 +1,4 @@
-export default class Currency {
+export class Currency {
   constructor(value = 0) {
     this.checkInt(value);
 
@@ -71,3 +71,5 @@ export default class Currency {
     return splitArr;
   }
 }
+
+export const GOLDEN_RATIO = (1 + Math.sqrt(5)) / 2;

@@ -1,4 +1,7 @@
-import Currency from '../src/index';
+import {
+  Currency,
+  GOLDEN_RATIO,
+} from '../src/index';
 
 it('expects 2 + 2 to equal 4', () => {
   expect(2 + 2).toBe(4);
@@ -84,4 +87,8 @@ it('expects Currency to split all pennies without leftover change', () => {
   c.add(402);
 
   expect(c.split(toSplit)).toEqual([1.05, 1.04, 1.04, 1.04]);
+});
+
+it('expects the GOLDEN_RATIO to equal 1.6180339887498948482', () => {
+  expect(GOLDEN_RATIO).toBe(1.6180339887498948482);
 });
