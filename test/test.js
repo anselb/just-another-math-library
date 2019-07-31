@@ -11,6 +11,7 @@ it('expects Currency to only allow integers', () => {
   const n = 15.30;
 
   expect(() => {
+    // eslint-disable-next-line no-unused-vars
     const c = new Currency(n);
   }).toThrow(TypeError(`Expected integer representing pennies, received ${n}`));
 });
@@ -91,4 +92,37 @@ it('expects Currency to split all pennies without leftover change', () => {
 
 it('expects the GOLDEN_RATIO to equal 1.6180339887498948482', () => {
   expect(GOLDEN_RATIO).toBe(1.6180339887498948482);
+});
+
+it('expects .round() to work on Numbers', () => {
+  expect(4.56.round()).toBe(5);
+  expect(4.46.round()).toBe(4);
+
+  const num1 = Number(194.78);
+  expect(num1.round()).toBe(195);
+
+  const num2 = Number(620.28);
+  expect(num2.round()).toBe(620);
+});
+
+it('expects .floor() to work on Numbers', () => {
+  expect(4.56.floor()).toBe(4);
+  expect(4.46.floor()).toBe(4);
+
+  const num1 = Number(194.78);
+  expect(num1.floor()).toBe(194);
+
+  const num2 = Number(620.28);
+  expect(num2.floor()).toBe(620);
+});
+
+it('expects .ceil() to work on Numbers', () => {
+  expect(4.56.ceil()).toBe(5);
+  expect(4.46.ceil()).toBe(5);
+
+  const num1 = Number(194.78);
+  expect(num1.ceil()).toBe(195);
+
+  const num2 = Number(620.28);
+  expect(num2.ceil()).toBe(621);
 });
