@@ -30,7 +30,7 @@ export default class Currency {
 
     this.value /= n;
     // Round down when dividing, I will keep the extra
-    Math.floor(this.value);
+    this.value = Math.floor(this.value);
     return this;
   }
 
