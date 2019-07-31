@@ -1,32 +1,32 @@
 export default class Currency {
   constructor(value = 0) {
-    this.testInt(value);
+    this.checkInt(value);
 
     this.value = value;
   }
 
-  testInt(n) {
+  checkInt(n) {
     if (n % 1 !== 0) {
       throw TypeError(`Expected integer representing pennies, received ${n}`);
     }
   }
 
   multiply(n) {
-    this.testInt(n);
+    this.checkInt(n);
 
     this.value *= n;
     return this;
   }
 
   add(n) {
-    this.testInt(n);
+    this.checkInt(n);
 
     this.value += n;
     return this;
   }
 
   divide(n) {
-    this.testInt(n);
+    this.checkInt(n);
 
     this.value /= n;
     // Round down when dividing, I will keep the extra
@@ -35,14 +35,14 @@ export default class Currency {
   }
 
   subtract(n) {
-    this.testInt(n);
+    this.checkInt(n);
 
     this.value -= n;
     return this;
   }
 
   split(n) {
-    this.testInt(n);
+    this.checkInt(n);
 
     // Create split array
     const splitArr = [];
