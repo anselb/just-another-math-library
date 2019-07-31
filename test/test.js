@@ -53,3 +53,17 @@ it('expects Currency to multiply integers', () => {
 
   expect(c.multiply(toMultiply).value).toBe(60);
 });
+
+it('expects Currency to divide integers', () => {
+  const n = 15;
+  const c = new Currency(n);
+  let toDivide = 3.56;
+
+  expect(() => {
+    c.add(toDivide);
+  }).toThrow(TypeError(`Expected integer representing pennies, received ${toDivide}`));
+
+  toDivide = 4;
+
+  expect(c.divide(toDivide).value).toBe(3);
+});
