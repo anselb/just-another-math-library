@@ -73,3 +73,18 @@ export class Currency {
 }
 
 export const GOLDEN_RATIO = (1 + Math.sqrt(5)) / 2;
+
+// eslint-disable-next-line no-extend-native
+Number.prototype.round = function round() {
+  return Math.round(this);
+};
+
+// eslint-disable-next-line no-extend-native
+Number.prototype.floor = function floor() {
+  return Math.floor(this);
+};
+
+// eslint-disable-next-line no-extend-native
+Number.prototype.ceil = function ceil() {
+  return Math.ceil(this);
+};
