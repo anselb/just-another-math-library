@@ -88,3 +88,30 @@ Number.prototype.floor = function floor() {
 Number.prototype.ceil = function ceil() {
   return Math.ceil(this);
 };
+
+// eslint-disable-next-line no-extend-native
+Number.prototype.pad = function pad(left, right) {
+  if (left < 0 || right < 0) {
+    throw RangeError('left and right parameters cannot be negative');
+  }
+
+  // Numbers can't be padded, so convert number to string
+  const numberString = String(this);
+  // Split number by its decimal, if it has one
+  const numberSplit = numberString.split('.');
+
+  // Pad the left side of the decimal with up to "left" number of zeros
+  numberSplit[0] = numberSplit[0].padStart(left, '0');
+
+  // If there is no deciaml, but there needs to be right padding, add string for after decimal
+  if (right > 0 && numberSplit.length === 1) {
+    numberSplit.push('');
+  }
+  // If there is a number after the decimal, pad it
+  if (numberSplit.length === 2) {
+    numberSplit[1] = numberSplit[1].padEnd(right, '0');
+  }
+
+  // Put the decimal back and return the number string
+  return numberSplit.join('.');
+};
