@@ -67,3 +67,21 @@ it('expects Currency to divide integers', () => {
 
   expect(c.divide(toDivide).value).toBe(3);
 });
+
+it('expects Currency to split all pennies without leftover change', () => {
+  const n = 15;
+  const c = new Currency(n);
+  let toSplit = 3.56;
+
+  expect(() => {
+    c.split(toSplit);
+  }).toThrow(TypeError(`Expected integer representing pennies, received ${toSplit}`));
+
+  toSplit = 4;
+
+  expect(c.split(toSplit)).toEqual([0.04, 0.04, 0.04, 0.03]);
+
+  c.add(402)
+
+  expect(c.split(toSplit)).toEqual([1.05, 1.04, 1.04, 1.04]);
+});
