@@ -126,3 +126,19 @@ it('expects .ceil() to work on Numbers', () => {
   const num2 = Number(620.28);
   expect(num2.ceil()).toBe(621);
 });
+
+it('expects .pad() to pad a number with zeros', () => {
+  expect(() => {
+    1.1.pad(-1, 3);
+  }).toThrow(RangeError('left and right parameters cannot be negative'));
+
+  expect(4.56.pad(2, 4)).toBe('04.5600');
+  expect(4.46.pad(5, 6)).toBe('00004.460000');
+  expect((4).pad(3, 2)).toBe('004.00');
+
+  const num1 = Number(194.78);
+  expect(num1.pad(0, 0)).toBe('194.78');
+
+  const num2 = Number(0.28);
+  expect(num2.pad(0, 10)).toBe('0.2800000000');
+});
