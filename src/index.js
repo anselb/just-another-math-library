@@ -153,8 +153,8 @@ export function toDollars(amount) {
   return `$${dollars}`;
 }
 
-export function intFormat(amount, countryCode, style) {
-  return { amount, countryCode, style };
+export function intlCurrencyFormat(amount, locales, currencyType) {
+  return new Intl.NumberFormat(locales, { style: 'currency', currency: currencyType }).format(amount);
 }
 
 export function tax(rate) {
