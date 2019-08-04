@@ -115,3 +115,52 @@ Number.prototype.pad = function pad(left, right) {
   // Put the decimal back and return the number string
   return numberSplit.join('.');
 };
+
+export function degToRad(angle) {
+  return angle;
+}
+
+export function radToDeg(angle) {
+  return angle;
+}
+
+export function toDollars(amount) {
+  return amount;
+}
+
+export function intFormat(amount, countryCode, style) {
+  return { amount, countryCode, style };
+}
+
+export function tax(rate) {
+  return rate;
+}
+
+export function withTax(rate) {
+  return rate;
+}
+
+// Should return the principal (amount borrowed) times the interest (interest rate)
+// times the term (length of loan)
+export function interest(interestRate, principal, terms) {
+  return { interest, principal, terms };
+}
+
+export function mortage(principal, numberOfPayments, interestRate) {
+  return { principal, numberOfPayments, interestRate };
+}
+
+export function intToHex(num) {
+  return num;
+}
+
+export function random(num) {
+  return num;
+}
+
+export function randomRange(min, max) {
+  return { min, max };
+}
+
+export function randomColor() {
+}
