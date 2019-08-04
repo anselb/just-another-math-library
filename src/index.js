@@ -169,12 +169,18 @@ export function withTax(amount, rate) {
 
 // Should return the principal (amount borrowed) times the interest (interest rate)
 // times the term (length of loan)
-export function interest(interestRate, principal, terms) {
-  return { interest, principal, terms };
+export function interest(principal, interestRate, terms) {
+  // I = Prt
+  // interestRate is expected to be in decimal format
+  return principal * interestRate * terms;
 }
 
-export function mortage(principal, numberOfPayments, interestRate) {
-  return { principal, numberOfPayments, interestRate };
+// Should return monthly mortgage payment
+// Solution modified from https://stackoverflow.com/questions/17101442/how-to-calculate-mortgage-in-javascript
+export function monthlyMortgage(principal, numberOfPayments, interestRate) {
+  // interestRate is expected to be in decimal format and per month
+  const x = ((1 + interestRate) ** numberOfPayments);
+  return principal * interestRate * x / (x - 1);
 }
 
 export function intToHex(num) {
