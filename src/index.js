@@ -195,13 +195,21 @@ export function intToHex(num) {
   return hexString.toString(16).toUpperCase();
 }
 
-export function random(num) {
-  return num;
+export function randomRange(min, max) {
+  const minCeil = Math.ceil(min);
+  const maxFloor = Math.floor(max);
+  // The maximum is inclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (maxFloor - minCeil + 1)) + minCeil;
 }
 
-export function randomRange(min, max) {
-  return { min, max };
+export function random(num) {
+  return randomRange(0, num - 1);
 }
 
 export function randomColor() {
+  const largestHexInDecimal = 16777215;
+  const randomColorDeci = randomRange(0, largestHexInDecimal);
+  const randomColorHex = intToHex(randomColorDeci);
+
+  return `#${randomColorHex}`;
 }
