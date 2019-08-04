@@ -157,12 +157,14 @@ export function intlCurrencyFormat(amount, locales, currencyType) {
   return new Intl.NumberFormat(locales, { style: 'currency', currency: currencyType }).format(amount);
 }
 
-export function tax(rate) {
-  return rate;
+export function tax(amount, rate) {
+  // Sales tax rounds up
+  return Math.round(amount * rate * 100) / 100;
 }
 
-export function withTax(rate) {
-  return rate;
+export function withTax(amount, rate) {
+  // Sales tax rounds up
+  return Math.round((amount + amount * rate) * 100) / 100;
 }
 
 // Should return the principal (amount borrowed) times the interest (interest rate)
