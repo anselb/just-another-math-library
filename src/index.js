@@ -125,7 +125,32 @@ export function radToDeg(angle) {
 }
 
 export function toDollars(amount) {
-  return amount;
+  // Use Math.floor since .99 of a cent is technically not worth a cent
+  if (amount > -1 && amount < 1) {
+    let cents;
+    if (amount < 0) {
+      // If negative cents, round to the ceiling as it should always round down less than a cent
+      cents = Math.ceil(amount * 100) / 100;
+      // If negative cents, move the negative sign before the cent symbol
+      cents *= -1;
+      return `-¢${cents}`;
+    }
+    // Otherwise, return cents normally
+    cents = Math.floor(amount * 100) / 100;
+    return `¢${cents}`;
+  }
+
+  let dollars;
+  if (amount < 0) {
+    // If negative dollars, round to the ceiling as it should always round down less than a cent
+    dollars = Math.ceil(amount * 100) / 100;
+    // If negative dollars, move the negative sign before the dollar symbol
+    dollars *= -1;
+    return `-$${dollars}`;
+  }
+  // Otherwise, return dollars normally
+  dollars = Math.floor(amount * 100) / 100;
+  return `$${dollars}`;
 }
 
 export function intFormat(amount, countryCode, style) {
