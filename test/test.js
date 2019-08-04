@@ -3,6 +3,7 @@ import {
   GOLDEN_RATIO,
   degToRad,
   radToDeg,
+  toDollars,
 } from '../src/index';
 
 it('expects 2 + 2 to equal 4', () => {
@@ -165,4 +166,15 @@ it('expects radToDeg() to convert radians to degrees', () => {
 
   const num2 = Number(-2 * Math.PI);
   expect(radToDeg(num2)).toBe(-360);
+});
+
+it('expects toDollars() to format any number to a dollar amount with correct symbols', () => {
+  expect(toDollars(0.0174532)).toBe('¢0.01');
+  expect(toDollars(108.2962)).toBe('$108.29');
+
+  const num1 = Number(-0.99557);
+  expect(toDollars(num1)).toBe('-¢0.99');
+
+  const num2 = Number(-7.58);
+  expect(toDollars(num2)).toBe('-$7.58');
 });
