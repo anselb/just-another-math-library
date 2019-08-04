@@ -183,8 +183,16 @@ export function monthlyMortgage(principal, numberOfPayments, interestRate) {
   return principal * interestRate * x / (x - 1);
 }
 
+// Solution from https://stackoverflow.com/questions/57803/how-to-convert-decimal-to-hexadecimal-in-javascript
 export function intToHex(num) {
-  return num;
+  let hexString = num;
+
+  if (num < 0) {
+    // If negative, do some weird math for hexadecimal signed 2's complement
+    hexString = 0xFFFFFFFF + num + 1;
+  }
+
+  return hexString.toString(16).toUpperCase();
 }
 
 export function random(num) {
