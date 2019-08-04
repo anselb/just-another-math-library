@@ -117,11 +117,11 @@ Number.prototype.pad = function pad(left, right) {
 };
 
 export function degToRad(angle) {
-  return angle;
+  return angle * Math.PI / 180;
 }
 
 export function radToDeg(angle) {
-  return angle;
+  return angle * 180 / Math.PI;
 }
 
 export function toDollars(amount) {
