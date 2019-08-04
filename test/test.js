@@ -4,6 +4,7 @@ import {
   degToRad,
   radToDeg,
   toDollars,
+  intlCurrencyFormat,
 } from '../src/index';
 
 it('expects 2 + 2 to equal 4', () => {
@@ -177,4 +178,15 @@ it('expects toDollars() to format any number to a dollar amount with correct sym
 
   const num2 = Number(-7.58);
   expect(toDollars(num2)).toBe('-$7.58');
+});
+
+it('expects intlCurrencyFormat() to correctly format a number to a monetary amount', () => {
+  expect(intlCurrencyFormat(123456.789, 'de-DE', 'EUR')).toBe('123.456,79 €');
+  expect(intlCurrencyFormat(123456.789, 'ja-JP', 'JPY')).toBe('￥123,457');
+
+  const num1 = Number(123456.789);
+  expect(intlCurrencyFormat(num1, 'en-US', 'USD')).toBe('$123,456.79');
+
+  const num2 = Number(-23465.197);
+  expect(intlCurrencyFormat(num2, 'fr-CA', 'CAD')).toBe('-23 465,20 $');
 });
