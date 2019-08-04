@@ -1,6 +1,8 @@
 import {
   Currency,
   GOLDEN_RATIO,
+  degToRad,
+  radToDeg,
 } from '../src/index';
 
 it('expects 2 + 2 to equal 4', () => {
@@ -141,4 +143,26 @@ it('expects .pad() to pad a number with zeros', () => {
 
   const num2 = Number(0.28);
   expect(num2.pad(0, 10)).toBe('0.2800000000');
+});
+
+it('expects degToRad() to convert degrees to radians', () => {
+  expect(degToRad(1)).toBe(0.017453292519943295);
+  expect(degToRad(180)).toBe(Math.PI);
+
+  const num1 = Number(-63);
+  expect(degToRad(num1)).toBe(-1.0995574287564276);
+
+  const num2 = Number(-360);
+  expect(degToRad(num2)).toBe(-2 * Math.PI);
+});
+
+it('expects radToDeg() to convert radians to degrees', () => {
+  expect(radToDeg(0.017453292519943295)).toBe(1);
+  expect(radToDeg(Math.PI)).toBe(180);
+
+  const num1 = Number(-1.0995574287564276);
+  expect(radToDeg(num1)).toBe(-63);
+
+  const num2 = Number(-2 * Math.PI);
+  expect(radToDeg(num2)).toBe(-360);
 });
