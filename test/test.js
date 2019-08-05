@@ -7,6 +7,8 @@ import {
   intlCurrencyFormat,
   tax,
   withTax,
+  interest,
+  monthlyMortgage,
 } from '../src/index';
 
 it('expects 2 + 2 to equal 4', () => {
@@ -217,4 +219,30 @@ it('expects withTax() to correctly calculate tax, add it to the original amount,
   const num2 = Number(299.82);
   const tax2 = Number(0.0528);
   expect(withTax(num2, tax2)).toBe(315.65);
+});
+
+it('expects interest() to correctly calculate interest gained', () => {
+  expect(interest(100, 0.019 / 12, 12)).toBe(1.90);
+  expect(interest(20.85, 0.021 / 12, 24)).toBe(0.88);
+
+  const num1 = Number(613.65);
+  const interestRate = Number(0.094 / 12);
+  expect(interest(num1, interestRate, 36)).toBe(173.05);
+
+  const num2 = Number(299.82);
+  const terms = Number(48);
+  expect(interest(num2, 0.00277, terms)).toBe(39.86);
+});
+
+it('expects monthlyMortgage() to correctly calculate monthly mortgage payment', () => {
+  expect(monthlyMortgage(1400000, 0.031 / 12, 20 * 12)).toBe(7834.64);
+  expect(monthlyMortgage(2100000, 0.0287 / 12, 25 * 12)).toBe(9817.03);
+
+  const num1 = Number(240000);
+  const interestRate = Number(0.041 / 12);
+  expect(monthlyMortgage(num1, interestRate, 360)).toBe(1159.68);
+
+  const num2 = Number(100000);
+  const terms = Number(180);
+  expect(monthlyMortgage(num2, 0.005, terms)).toBe(843.86);
 });
