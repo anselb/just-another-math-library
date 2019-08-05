@@ -158,12 +158,12 @@ export function intlCurrencyFormat(amount, locales, currencyType) {
 }
 
 export function tax(amount, rate) {
-  // Sales tax rounds up
+  // Sales tax rounds normally
   return Math.round(amount * rate * 100) / 100;
 }
 
 export function withTax(amount, rate) {
-  // Sales tax rounds up
+  // Sales tax rounds normally
   return Math.round((amount + amount * rate) * 100) / 100;
 }
 
