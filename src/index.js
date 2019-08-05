@@ -172,7 +172,7 @@ export function withTax(amount, rate) {
 export function interest(principal, interestRate, terms) {
   // I = Prt
   // interestRate is expected to be in decimal format
-  return principal * interestRate * terms;
+  return Math.round(principal * interestRate * terms * 100) / 100;
 }
 
 // Should return monthly mortgage payment
@@ -180,7 +180,9 @@ export function interest(principal, interestRate, terms) {
 export function monthlyMortgage(principal, interestRate, numberOfPayments) {
   // interestRate is expected to be in decimal format and per month
   const x = ((1 + interestRate) ** numberOfPayments);
-  return principal * interestRate * x / (x - 1);
+  let payments = principal * interestRate * x / (x - 1);
+  payments = Math.round(payments * 100) / 100
+  return payments;
 }
 
 // Solution from https://stackoverflow.com/questions/57803/how-to-convert-decimal-to-hexadecimal-in-javascript
