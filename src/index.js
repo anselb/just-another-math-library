@@ -213,5 +213,5 @@ export function randomColor() {
   const randomColorDeci = randomRange(0, largestHexInDecimal);
   const randomColorHex = intToHex(randomColorDeci);
 
-  return `#${randomColorHex}`;
+  return `#${randomColorHex.padEnd(6, '0')}`;
 }
