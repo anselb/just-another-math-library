@@ -10,6 +10,7 @@ import {
   interest,
   monthlyMortgage,
   intToHex,
+  randomRange,
 } from '../src/index';
 
 it('expects 2 + 2 to equal 4', () => {
@@ -257,4 +258,38 @@ it('expects intToHex() to convert any base10 integer to a hexadecimal string', (
 
   const num2 = Number(386);
   expect(intToHex(num2)).toBe('182');
+});
+
+// Set Math.random to always return 5
+// Taken from https://stackoverflow.com/questions/41570273/how-to-test-a-function-that-output-is-random-using-jest
+const mockMath = Object.create(global.Math);
+global.Math = mockMath;
+mockMath.random = () => 0.5;
+// Bounds of Math.random are:
+// Lower: 0
+// Upper: 0.9999999999999999
+
+it('expects Math.random() to return 0.5', () => {
+  mockMath.random = () => 0.1;
+  expect(Math.random()).toBe(0.1);
+
+  mockMath.random = () => 0.5;
+  expect(Math.random()).toBe(0.5);
+});
+
+it('expects randomRange() to return a number between min and max, inclusive', () => {
+  mockMath.random = () => 0;
+  expect(randomRange(4, 10)).toBe(4);
+  mockMath.random = () => 0.9999999999999999;
+  expect(randomRange(4, 10)).toBe(10);
+
+  const num1 = Number(42);
+  const num2 = Number(847);
+
+  mockMath.random = () => 0;
+  expect(randomRange(num1, num2)).toBe(42);
+  mockMath.random = () => 0.5;
+  expect(randomRange(num1, num2)).toBe(445);
+  mockMath.random = () => 0.9999999999999999;
+  expect(randomRange(num1, num2)).toBe(847);
 });
