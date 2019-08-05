@@ -9,6 +9,7 @@ import {
   withTax,
   interest,
   monthlyMortgage,
+  intToHex,
 } from '../src/index';
 
 it('expects 2 + 2 to equal 4', () => {
@@ -245,4 +246,15 @@ it('expects monthlyMortgage() to correctly calculate monthly mortgage payment', 
   const num2 = Number(100000);
   const terms = Number(180);
   expect(monthlyMortgage(num2, 0.005, terms)).toBe(843.86);
+});
+
+it('expects intToHex() to convert any base10 integer to a hexadecimal string', () => {
+  expect(intToHex(15)).toBe('F');
+  expect(intToHex(-3253)).toBe('FFFFF34B');
+
+  const num1 = Number(-762);
+  expect(intToHex(num1)).toBe('FFFFFD06');
+
+  const num2 = Number(386);
+  expect(intToHex(num2)).toBe('182');
 });
