@@ -5,6 +5,8 @@ import {
   radToDeg,
   toDollars,
   intlCurrencyFormat,
+  tax,
+  withTax,
 } from '../src/index';
 
 it('expects 2 + 2 to equal 4', () => {
@@ -189,4 +191,30 @@ it('expects intlCurrencyFormat() to correctly format a number to a monetary amou
 
   const num2 = Number(-23465.197);
   expect(intlCurrencyFormat(num2, 'fr-CA', 'CAD')).toBe('-23 465,20 $');
+});
+
+it('expects tax() to correctly calculate tax and return it', () => {
+  expect(tax(100, 0.0725)).toBe(7.25);
+  expect(tax(20.85, 0.085)).toBe(1.77);
+
+  const num1 = Number(205.85);
+  const tax1 = Number(0.0498);
+  expect(tax(num1, tax1)).toBe(10.25);
+
+  const num2 = Number(79.32);
+  const tax2 = Number(0.12);
+  expect(tax(num2, tax2)).toBe(9.52);
+});
+
+it('expects withTax() to correctly calculate tax, add it to the original amount, and return it', () => {
+  expect(withTax(100, 0.0725)).toBe(107.25);
+  expect(withTax(20.85, 0.085)).toBe(22.62);
+
+  const num1 = Number(613.65);
+  const tax1 = Number(0.094);
+  expect(withTax(num1, tax1)).toBe(671.33);
+
+  const num2 = Number(299.82);
+  const tax2 = Number(0.0528);
+  expect(withTax(num2, tax2)).toBe(315.65);
 });
