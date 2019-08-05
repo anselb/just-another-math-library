@@ -11,6 +11,8 @@ import {
   monthlyMortgage,
   intToHex,
   randomRange,
+  random,
+  randomColor,
 } from '../src/index';
 
 it('expects 2 + 2 to equal 4', () => {
@@ -292,4 +294,29 @@ it('expects randomRange() to return a number between min and max, inclusive', ()
   expect(randomRange(num1, num2)).toBe(445);
   mockMath.random = () => 0.9999999999999999;
   expect(randomRange(num1, num2)).toBe(847);
+});
+
+it('expects random() to return a number between 0 and num - 1, inclusive', () => {
+  mockMath.random = () => 0;
+  expect(random(10)).toBe(0);
+  mockMath.random = () => 0.9999999999999999;
+  expect(random(10)).toBe(9);
+
+  const num1 = Number(942);
+
+  mockMath.random = () => 0;
+  expect(random(num1)).toBe(0);
+  mockMath.random = () => 0.5;
+  expect(random(num1)).toBe(471);
+  mockMath.random = () => 0.9999999999999999;
+  expect(random(num1)).toBe(941);
+});
+
+it('expects randomColor() to return a random hexadecimal color', () => {
+  mockMath.random = () => 0;
+  expect(randomColor()).toBe('#000000');
+  mockMath.random = () => 0.5;
+  expect(randomColor()).toBe('#800000');
+  mockMath.random = () => 0.9999999999999999;
+  expect(randomColor()).toBe('#FFFFFF');
 });
