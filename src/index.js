@@ -177,7 +177,7 @@ export function interest(principal, interestRate, terms) {
 
 // Should return monthly mortgage payment
 // Solution modified from https://stackoverflow.com/questions/17101442/how-to-calculate-mortgage-in-javascript
-export function monthlyMortgage(principal, numberOfPayments, interestRate) {
+export function monthlyMortgage(principal, interestRate, numberOfPayments) {
   // interestRate is expected to be in decimal format and per month
   const x = ((1 + interestRate) ** numberOfPayments);
   return principal * interestRate * x / (x - 1);
