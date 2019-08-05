@@ -181,7 +181,7 @@ export function monthlyMortgage(principal, interestRate, numberOfPayments) {
   // interestRate is expected to be in decimal format and per month
   const x = ((1 + interestRate) ** numberOfPayments);
   let payments = principal * interestRate * x / (x - 1);
-  payments = Math.round(payments * 100) / 100
+  payments = Math.round(payments * 100) / 100;
   return payments;
 }
 
