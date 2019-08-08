@@ -29,8 +29,7 @@ it('expects Currency to only allow integers', () => {
 });
 
 it('expects Currency to add integers', () => {
-  const n = 15;
-  const c = new Currency(n);
+  const c = new Currency();
   let toAdd = 3.56;
 
   expect(() => {
@@ -39,7 +38,7 @@ it('expects Currency to add integers', () => {
 
   toAdd = 4;
 
-  expect(c.add(toAdd).value).toBe(19);
+  expect(c.add(toAdd).value).toBe(4);
 });
 
 it('expects Currency to subtract integers', () => {
@@ -147,6 +146,7 @@ it('expects .pad() to pad a number with zeros', () => {
   expect(4.56.pad(2, 4)).toBe('04.5600');
   expect(4.46.pad(5, 6)).toBe('00004.460000');
   expect((4).pad(3, 2)).toBe('004.00');
+  expect((4).pad(3, 0)).toBe('004');
 
   const num1 = Number(194.78);
   expect(num1.pad(0, 0)).toBe('194.78');
