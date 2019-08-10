@@ -1,4 +1,5 @@
 export class Currency {
+  value: number;
   constructor(value = 0) {
     this.checkInt(value);
 
@@ -6,27 +7,27 @@ export class Currency {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  checkInt(n) {
+  checkInt(n: number): void {
     if (n % 1 !== 0) {
       throw TypeError(`Expected integer representing pennies, received ${n}`);
     }
   }
 
-  multiply(n) {
+  multiply(n: number): Currency {
     this.checkInt(n);
 
     this.value *= n;
     return this;
   }
 
-  add(n) {
+  add(n: number): Currency {
     this.checkInt(n);
 
     this.value += n;
     return this;
   }
 
-  divide(n) {
+  divide(n: number): Currency {
     this.checkInt(n);
 
     this.value /= n;
@@ -35,14 +36,14 @@ export class Currency {
     return this;
   }
 
-  subtract(n) {
+  subtract(n: number): Currency {
     this.checkInt(n);
 
     this.value -= n;
     return this;
   }
 
-  split(n) {
+  split(n: number): number[] {
     this.checkInt(n);
 
     // Create split array
@@ -113,18 +114,18 @@ Number.prototype.pad = function pad(left, right) {
   return numberSplit.join('.');
 };
 
-export function degToRad(angle) {
+export function degToRad(angle: number): number {
   return angle * Math.PI / 180;
 }
 
-export function radToDeg(angle) {
+export function radToDeg(angle: number): number {
   return angle * 180 / Math.PI;
 }
 
-export function toDollars(amount) {
+export function toDollars(amount: number): string {
   // Use Math.floor since .99 of a cent is technically not worth a cent
   if (amount > -1 && amount < 1) {
-    let cents;
+    let cents: number;
     if (amount < 0) {
       // If negative cents, round to the ceiling as it should always round down less than a cent
       cents = Math.ceil(amount * 100) / 100;
@@ -137,7 +138,7 @@ export function toDollars(amount) {
     return `¢${cents}`;
   }
 
-  let dollars;
+  let dollars: number;
   if (amount < 0) {
     // If negative dollars, round to the ceiling as it should always round down less than a cent
     dollars = Math.ceil(amount * 100) / 100;
@@ -150,23 +151,23 @@ export function toDollars(amount) {
   return `$${dollars}`;
 }
 
-export function intlCurrencyFormat(amount, locales, currencyType) {
+export function intlCurrencyFormat(amount: number, locales: string, currencyType: string): string {
   return new Intl.NumberFormat(locales, { style: 'currency', currency: currencyType }).format(amount);
 }
 
-export function tax(amount, rate) {
+export function tax(amount: number, rate: number): number {
   // Sales tax rounds normally
   return Math.round(amount * rate * 100) / 100;
 }
 
-export function withTax(amount, rate) {
+export function withTax(amount: number, rate: number): number {
   // Sales tax rounds normally
   return Math.round((amount + amount * rate) * 100) / 100;
 }
 
 // Should return the principal (amount borrowed) times the interest (interest rate)
 // times the term (length of loan)
-export function interest(principal, interestRate, terms) {
+export function interest(principal: number, interestRate: number, terms: number): number {
   // I = Prt
   // interestRate is expected to be in decimal format
   return Math.round(principal * interestRate * terms * 100) / 100;
@@ -174,7 +175,7 @@ export function interest(principal, interestRate, terms) {
 
 // Should return monthly mortgage payment
 // Solution modified from https://stackoverflow.com/questions/17101442/how-to-calculate-mortgage-in-javascript
-export function monthlyMortgage(principal, interestRate, numberOfPayments) {
+export function monthlyMortgage(principal: number, interestRate: number, numberOfPayments: number): number {
   // interestRate is expected to be in decimal format and per month
   const x = ((1 + interestRate) ** numberOfPayments);
   let payments = principal * interestRate * x / (x - 1);
@@ -183,8 +184,8 @@ export function monthlyMortgage(principal, interestRate, numberOfPayments) {
 }
 
 // Solution from https://stackoverflow.com/questions/57803/how-to-convert-decimal-to-hexadecimal-in-javascript
-export function intToHex(num) {
-  let hexString = num;
+export function intToHex(num: number): string {
+  let hexString: number = num;
 
   if (num < 0) {
     // If negative, do some weird math for hexadecimal signed 2's complement
@@ -194,21 +195,21 @@ export function intToHex(num) {
   return hexString.toString(16).toUpperCase();
 }
 
-export function randomRange(min, max) {
-  const minCeil = Math.ceil(min);
-  const maxFloor = Math.floor(max);
+export function randomRange(min: number, max: number): number {
+  const minCeil: number = Math.ceil(min);
+  const maxFloor: number = Math.floor(max);
   // The maximum is inclusive and the minimum is inclusive
   return Math.floor(Math.random() * (maxFloor - minCeil + 1)) + minCeil;
 }
 
-export function random(num) {
+export function random(num: number): number {
   return randomRange(0, num - 1);
 }
 
-export function randomColor() {
-  const largestHexInDecimal = 16777215;
-  const randomColorDeci = randomRange(0, largestHexInDecimal);
-  const randomColorHex = intToHex(randomColorDeci);
+export function randomColor(): string {
+  const largestHexInDecimal: number = 16777215;
+  const randomColorDeci: number = randomRange(0, largestHexInDecimal);
+  const randomColorHex: string = intToHex(randomColorDeci);
 
   return `#${randomColorHex.padEnd(6, '0')}`;
 }
