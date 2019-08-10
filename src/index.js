@@ -62,9 +62,6 @@ export class Currency {
         splitArr[i] += 1;
         leftoverChange -= 1;
       }
-
-      // Convert the pennies to dollars
-      splitArr[i] /= 100;
     }
 
     // Return splits of the original value

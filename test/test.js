@@ -94,11 +94,11 @@ it('expects Currency to split all pennies without leftover change', () => {
 
   toSplit = 4;
 
-  expect(c.split(toSplit)).toEqual([0.04, 0.04, 0.04, 0.03]);
+  expect(c.split(toSplit)).toEqual([4, 4, 4, 3]);
 
   c.add(402);
 
-  expect(c.split(toSplit)).toEqual([1.05, 1.04, 1.04, 1.04]);
+  expect(c.split(toSplit)).toEqual([105, 104, 104, 104]);
 });
 
 it('expects the GOLDEN_RATIO to equal 1.6180339887498948482', () => {
