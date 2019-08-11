@@ -264,6 +264,7 @@ it('expects intToHex() to convert any base10 integer to a hexadecimal string', (
 
 // Set Math.random to always return 5
 // Taken from https://stackoverflow.com/questions/41570273/how-to-test-a-function-that-output-is-random-using-jest
+let global: any
 const mockMath = Object.create(global.Math);
 global.Math = mockMath;
 mockMath.random = () => 0.5;
