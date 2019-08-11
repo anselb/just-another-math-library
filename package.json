@@ -30,6 +30,7 @@
     "typescript": "^3.5.3"
   },
   "scripts": {
+    "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "prepare": "rollup --config",
     "test": "jest"
   },
