@@ -8,35 +8,35 @@ declare global {
 }
 
 export class Currency {
-  value: number;
-  constructor(value = 0) {
+  private value: number;
+  public constructor(value = 0) {
     this.checkInt(value);
 
     this.value = value;
   }
 
   // eslint-disable-next-line class-methods-use-this
-  checkInt(n: number): void {
+  private checkInt(n: number): void {
     if (n % 1 !== 0) {
       throw TypeError(`Expected integer representing pennies, received ${n}`);
     }
   }
 
-  multiply(n: number): Currency {
+  public multiply(n: number): Currency {
     this.checkInt(n);
 
     this.value *= n;
     return this;
   }
 
-  add(n: number): Currency {
+  public add(n: number): Currency {
     this.checkInt(n);
 
     this.value += n;
     return this;
   }
 
-  divide(n: number): Currency {
+  public divide(n: number): Currency {
     this.checkInt(n);
 
     this.value /= n;
@@ -45,14 +45,14 @@ export class Currency {
     return this;
   }
 
-  subtract(n: number): Currency {
+  public subtract(n: number): Currency {
     this.checkInt(n);
 
     this.value -= n;
     return this;
   }
 
-  split(n: number): number[] {
+  public split(n: number): number[] {
     this.checkInt(n);
 
     // Create split array
@@ -82,28 +82,28 @@ export class Currency {
 export const GOLDEN_RATIO = (1 + Math.sqrt(5)) / 2;
 
 // eslint-disable-next-line no-extend-native
-Number.prototype.round = function round() {
+Number.prototype.round = function round(): number {
   return Math.round(this);
 };
 
 // eslint-disable-next-line no-extend-native
-Number.prototype.floor = function floor() {
+Number.prototype.floor = function floor(): number {
   return Math.floor(this);
 };
 
 // eslint-disable-next-line no-extend-native
-Number.prototype.ceil = function ceil() {
+Number.prototype.ceil = function ceil(): number {
   return Math.ceil(this);
 };
 
 // eslint-disable-next-line no-extend-native
-Number.prototype.pad = function pad(left, right) {
+Number.prototype.pad = function pad(left, right): string {
   if (left < 0 || right < 0) {
     throw RangeError('left and right parameters cannot be negative');
   }
 
   // Numbers can't be padded, so convert number to string
-  const numberString: string = String(this);
+  const numberString = String(this);
   // Split number by its decimal, if it has one
   const numberSplit: string[] = numberString.split('.');
 
@@ -216,7 +216,7 @@ export function random(num: number): number {
 }
 
 export function randomColor(): string {
-  const largestHexInDecimal: number = 16777215;
+  const largestHexInDecimal = 16777215;
   const randomColorDeci: number = randomRange(0, largestHexInDecimal);
   const randomColorHex: string = intToHex(randomColorDeci);
 
