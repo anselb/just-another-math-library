@@ -1,3 +1,12 @@
+declare global {
+  interface Number {
+    round(): number;
+    floor(): number;
+    ceil(): number;
+    pad(left: number, right: number): string;
+  }
+}
+
 export class Currency {
   value: number;
   constructor(value = 0) {
@@ -94,9 +103,9 @@ Number.prototype.pad = function pad(left, right) {
   }
 
   // Numbers can't be padded, so convert number to string
-  const numberString = String(this);
+  const numberString: string = String(this);
   // Split number by its decimal, if it has one
-  const numberSplit = numberString.split('.');
+  const numberSplit: string[] = numberString.split('.');
 
   // Pad the left side of the decimal with up to "left" number of zeros
   numberSplit[0] = numberSplit[0].padStart(left, '0');
