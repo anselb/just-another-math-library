@@ -8,7 +8,7 @@ declare global {
 }
 
 export class Currency {
-  private value: number;
+  public value: number;
   public constructor(value = 0) {
     this.checkInt(value);
 
