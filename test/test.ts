@@ -189,14 +189,20 @@ it('expects toDollars() to format any number to a dollar amount with correct sym
 });
 
 it('expects intlCurrencyFormat() to correctly format a number to a monetary amount', (): void => {
-  expect(intlCurrencyFormat(123456.789, 'de-DE', 'EUR')).toBe('123.456,79 €');
-  expect(intlCurrencyFormat(123456.789, 'ja-JP', 'JPY')).toBe('￥123,457');
+  // Changed tests due to this error:
+  // https://github.com/mapbox/mapbox-gl-js/pull/8538
+
+  // Originally 'de-DE' and '123.456,79 €'
+  expect(intlCurrencyFormat(123456.789, 'en-US', 'EUR')).toBe('€123,456.79');
+  // Originally 'ja-JP' and '￥123,457'
+  expect(intlCurrencyFormat(123456.789, 'en-US', 'JPY')).toBe('¥123,457');
 
   const num1 = Number(123456.789);
   expect(intlCurrencyFormat(num1, 'en-US', 'USD')).toBe('$123,456.79');
 
   const num2 = Number(-23465.197);
-  expect(intlCurrencyFormat(num2, 'fr-CA', 'CAD')).toBe('-23 465,20 $');
+  // Originally 'fr-CA' and '-23 465,20 $'
+  expect(intlCurrencyFormat(num2, 'en-US', 'CAD')).toBe('-CA$23,465.20');
 });
 
 it('expects tax() to correctly calculate tax and return it', (): void => {
