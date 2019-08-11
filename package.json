@@ -2,7 +2,13 @@
   "name": "just-another-math-library",
   "version": "1.0.0",
   "description": "A library with some miscellaneous math things.",
-  "main": "src/index.js",
+  "main": "umd/just-another-math-library.js",
+  "module": "esm/index.js",
+  "files": [
+    "esm/*",
+    "emd/*"
+  ],
+  "types": "esm/index.d.ts",
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -17,10 +23,14 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.13.7",
     "jest": "^24.8.0",
+    "rollup": "^1.19.4",
+    "rollup-plugin-terser": "^5.1.1",
+    "rollup-plugin-typescript2": "^0.22.1",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
   },
   "scripts": {
+    "prepare": "rollup --config",
     "test": "jest"
   },
   "repository": {

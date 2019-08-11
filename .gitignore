@@ -120,4 +120,7 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
+# rollup cache
+.rpt2_cache
+
 # End of https://www.gitignore.io/api/node,macos

@@ -1,11 +1,21 @@
 {
   "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./esm",
+    "outDir": "./esm",
+    "module": "es6",
+    "target": "es5",
     "lib": [
       "es6",
       "es2017.string"
-    ]
+    ],
+    "noImplicitAny": true,
+    "moduleResolution": "node"
   },
-  "files": [
-    "src/index.ts"
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
