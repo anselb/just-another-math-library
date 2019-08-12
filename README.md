@@ -1,4 +1,10 @@
 # Just Another Math Library
+
+![npm bundle size](https://img.shields.io/bundlephobia/min/just-another-math-library.svg)
+![npm](https://img.shields.io/npm/v/just-another-math-library.svg)
+[![Build Status](https://travis-ci.com/anselb/just-another-math-library.svg?branch=master)](https://travis-ci.com/anselb/just-another-math-library)
+[![Coverage Status](https://coveralls.io/repos/github/anselb/just-another-math-library/badge.svg?branch=master)](https://coveralls.io/github/anselb/just-another-math-library?branch=master)
+
 A library with some miscellaneous math things. The first thing this library will handle is basic currency math (precise to two decimal points).
 
 ## Number Types
