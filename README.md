@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.com/anselb/just-another-math-library.svg?branch=master)](https://travis-ci.com/anselb/just-another-math-library)
 [![Coverage Status](https://coveralls.io/repos/github/anselb/just-another-math-library/badge.svg?branch=master)](https://coveralls.io/github/anselb/just-another-math-library?branch=master)
 
-A library with some miscellaneous math things. The first thing this library will handle is basic currency math (precise to two decimal points).
+A library with some miscellaneous math things.
 
 ## Number Types
   - `Currency()` - A class that represents currency. Currency expects to be initialized with an integer representing the smallest dividable unit of currency. If nothing is passed in, the Currency class will initialize to 0.
