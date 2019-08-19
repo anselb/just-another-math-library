@@ -1,12 +1,12 @@
 {
   "name": "just-another-math-library",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library with some miscellaneous math things.",
   "main": "umd/just-another-math-library.js",
   "module": "esm/index.js",
   "files": [
     "esm/*",
-    "emd/*"
+    "umd/*"
   ],
   "types": "esm/index.d.ts",
   "dependencies": {},
